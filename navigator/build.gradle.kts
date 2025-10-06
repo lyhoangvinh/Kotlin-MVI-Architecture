@@ -8,6 +8,7 @@ android {
   compileSdk = AppVersions.COMPILE_SDK
 
   defaultConfig {
+    namespace = "com.lyhoangvinh.sample.navigator"
     minSdk = (AppVersions.MIN_SDK)
     targetSdk = (AppVersions.TARGET_SDK)
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -21,12 +22,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
 
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
   }
 
   composeOptions {
@@ -42,8 +43,8 @@ kapt {
 
 dependencies {
   /*Kotlin*/
-  
 
+  implementation(platform("androidx.compose:compose-bom:${Lib.Androidx.composeBom}"))
   Lib.Androidx.list.forEach(::implementation)
   Lib.Androidx.Compose.list.forEach(::implementation)
   Lib.ThirdParty.list.forEach(::implementation)
@@ -54,7 +55,7 @@ dependencies {
   /*DI*/
   implementation(Lib.Di.hilt)
   implementation(Lib.Di.hiltNavigationCompose)
-  implementation(Lib.Di.viewmodel)
+//  implementation(Lib.Di.viewmodel)
   kapt(Lib.Di.hiltCompiler)
   kapt(Lib.Di.hiltAndroidCompiler)
 

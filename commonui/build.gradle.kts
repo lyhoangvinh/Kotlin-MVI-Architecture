@@ -11,6 +11,7 @@ android {
     compileSdk = AppVersions.COMPILE_SDK
 
     defaultConfig {
+        namespace = "com.lyhoangvinh.sample.commonui"
         minSdk = (AppVersions.MIN_SDK)
         targetSdk = (AppVersions.TARGET_SDK)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -34,6 +35,14 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 // Required for annotation processing plugins like Dagger
@@ -43,8 +52,8 @@ kapt {
 }
 
 dependencies {
-    
 
+    implementation(platform("androidx.compose:compose-bom:${Lib.Androidx.composeBom}"))
     Lib.Androidx.list.forEach(::implementation)
     Lib.Androidx.Compose.list.forEach(::implementation)
     Lib.ThirdParty.list.forEach(::implementation)
@@ -55,7 +64,7 @@ dependencies {
     /*DI*/
     implementation(Lib.Di.hilt)
     implementation(Lib.Di.hiltNavigationCompose)
-    implementation(Lib.Di.viewmodel)
+//    implementation(Lib.Di.viewmodel)
     kapt(Lib.Di.hiltCompiler)
     kapt(Lib.Di.hiltAndroidCompiler)
 

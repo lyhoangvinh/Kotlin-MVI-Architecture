@@ -1,16 +1,16 @@
 /** This file contains versions of all the dependencies used in the module  */
 
 object BuildPlugins {
-    private const val TOOLS_BUILD = "7.1.1"
+    private const val TOOLS_BUILD = "8.5.0"
     private const val KT_LINT = "9.2.1"
-    private const val SAFE_ARGS = "2.3.5"
+    private const val SAFE_ARGS = "2.7.7"
 
     const val TOOLS_BUILD_GRADLE = "com.android.tools.build:gradle:${TOOLS_BUILD}"
     const val KTLINT_GRADLE_PLUGIN = "org.jlleitschuh.gradle:ktlint-gradle:${KT_LINT}"
     const val SAFE_ARGS_GRADLE_PLUGIN =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${SAFE_ARGS}"
-    const val DAGGER_HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
-    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+    const val DAGGER_HILT_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:2.51"
+    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23"
     const val ANDROID_APPLICATION_PLUGIN = "com.android.application"
     const val ANDROID_LIBRARY_PLUGIN = "com.android.library"
     const val KOTLIN_ANDROID_PLUGIN = "kotlin-android"
@@ -23,15 +23,18 @@ object BuildPlugins {
 
 object Lib {
     object Kotlin {
-        const val KOTLIN_VERSION = "1.6.0"
+        const val KOTLIN_VERSION = "1.9.24"
         private const val KTX_CORE_VERSION = "1.2.0"
+
+        private const val COROUTINES_VERSION = "1.8.1"
+
         const val KT_STD = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_VERSION}"
         private const val KTX_CORE = "androidx.core:core-ktx:${KTX_CORE_VERSION}"
         private const val DATE_TIME = "org.jetbrains.kotlinx:kotlinx-datetime:0.3.2"
 
-        const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${KOTLIN_VERSION}"
+        const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${COROUTINES_VERSION}"
         private const val COROUTINES_ANDROID =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${KOTLIN_VERSION}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${COROUTINES_VERSION}"
 
         val list = listOf(KT_STD, KTX_CORE, DATE_TIME, COROUTINES, COROUTINES_ANDROID)
     }
@@ -47,9 +50,11 @@ object Lib {
 
     object Androidx {
         // Compose
-        const val composeVersion = "1.1.0"
-        private const val SPLASH_SCREEN_API = "androidx.core:core-splashscreen:1.0.0-beta01"
-        private const val APP_COMPAT = "androidx.appcompat:appcompat:1.3.0-beta01"
+        const val composeVersion = "1.5.14"
+        const val composeBom = "2024.09.01"
+        private const val SPLASH_SCREEN_API = "androidx.core:core-splashscreen:1.0.1"
+
+        private const val APP_COMPAT = "androidx.appcompat:appcompat:1.6.1"
 
         val list = listOf(
             APP_COMPAT,
@@ -57,21 +62,23 @@ object Lib {
         )
 
         object Compose {
-            private const val ACTIVITY_COMPOSE =
-                "androidx.activity:activity-compose:${composeVersion}"
-            private const val CONSTRAINT_LAYOUT_COMPOSE =
-                "androidx.constraintlayout:constraintlayout-compose:1.0.0"
-            private const val COMPOSE_UI = "androidx.compose.ui:ui:${composeVersion}"
+
+            private const val COMPOSE_UI = "androidx.compose.ui:ui"
             private const val COMPOSE_LIVEDATA =
-                "androidx.compose.runtime:runtime-livedata:${composeVersion}"
+                "androidx.compose.runtime:runtime-livedata"
             private const val COMPOSE_MATERIAL =
-                "androidx.compose.material:material:${composeVersion}"
+                "androidx.compose.material:material"
             private const val COMPOSE_TOOLING =
-                "androidx.compose.ui:ui-tooling-preview:${composeVersion}"
+                "androidx.compose.ui:ui-tooling-preview"
             private const val COMPOSE_DEBUG_TOOLING =
-                "androidx.compose.ui:ui-tooling:${composeVersion}"
+                "androidx.compose.ui:ui-tooling"
+
+            private const val CONSTRAINT_LAYOUT_COMPOSE =
+                "androidx.constraintlayout:constraintlayout-compose:1.0.1"
             private const val COMPOSE_NAVIGATION =
-                "androidx.navigation:navigation-compose:2.5.0-alpha01"
+                "androidx.navigation:navigation-compose:2.8.3"
+            private const val ACTIVITY_COMPOSE =
+                "androidx.activity:activity-compose:1.9.2"
 
             val list = listOf(
                 CONSTRAINT_LAYOUT_COMPOSE,
@@ -97,13 +104,13 @@ object Lib {
     }
 
     object Di {
-        private const val DAGGER_VERSION = "2.40.5"
+        private const val DAGGER_VERSION = "2.51"
         const val hilt = "com.google.dagger:hilt-android:${DAGGER_VERSION}"
         const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${DAGGER_VERSION}"
 
         const val viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-        const val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0"
-        const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
+        const val hiltCompiler = "androidx.hilt:hilt-compiler:1.2.0"
+        const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.2.0"
     }
 
     object Paging {

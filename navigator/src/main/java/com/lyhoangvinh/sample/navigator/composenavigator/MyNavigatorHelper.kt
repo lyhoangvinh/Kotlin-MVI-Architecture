@@ -48,15 +48,15 @@ class MyNavigatorHelper @Inject constructor(): NavigatorHelper() {
         val backStackEntry = route?.let { navController.getBackStackEntry(it) }
           ?: navController.currentBackStackEntry
 
-        backStackEntry?.savedStateHandle?.let { savedStateHandle ->
-          savedStateHandle.getLiveData<T?>(key)
-            .asFlow()
-            .filter { it != null }
-            .onEach {
-              // Nullify the result to avoid resubmitting it
-              savedStateHandle.set(key, null)
-            }
-        } ?: emptyFlow()
+          (backStackEntry?.savedStateHandle?.let { savedStateHandle ->
+              savedStateHandle.getLiveData<T?>(key)
+                  .asFlow()
+                  .filter { it != null }
+                  .onEach {
+                      // Nullify the result to avoid resubmitting it
+                      savedStateHandle.set(key, null)
+                  }
+          } ?: emptyFlow()) as Flow<T>
       }
   }
 
