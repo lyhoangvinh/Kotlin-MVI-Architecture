@@ -12,6 +12,7 @@ android {
   compileSdk = (AppVersions.COMPILE_SDK)
 
   defaultConfig {
+    namespace = "com.lyhoangvinh.sample"
     applicationId = (AppVersions.APPLICATION_ID)
     minSdk = (AppVersions.MIN_SDK)
     targetSdk = (AppVersions.TARGET_SDK)
@@ -52,10 +53,8 @@ android {
   }
 
   buildFeatures {
-    dataBinding = true
-  }
-
-  buildFeatures {
+    dataBinding = false
+    viewBinding = true
     compose = true
   }
 
@@ -71,12 +70,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
   }
 
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
   }
 }
 
@@ -92,8 +91,8 @@ hilt {
 }
 
 dependencies {
-  
 
+  implementation(platform("androidx.compose:compose-bom:${Lib.Androidx.composeBom}"))
   Lib.Androidx.list.forEach(::api)
   Lib.Androidx.Compose.list.forEach(::api)
   Lib.ThirdParty.list.forEach(::api)
@@ -110,7 +109,7 @@ dependencies {
   /*DI*/
   api(Lib.Di.hilt)
   api(Lib.Di.hiltNavigationCompose)
-  api(Lib.Di.viewmodel)
+//  api(Lib.Di.viewmodel)
   kapt(Lib.Di.hiltCompiler)
   kapt(Lib.Di.hiltAndroidCompiler)
 

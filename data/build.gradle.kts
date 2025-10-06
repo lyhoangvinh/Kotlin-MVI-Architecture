@@ -9,6 +9,7 @@ android {
   compileSdk = AppVersions.COMPILE_SDK
 
   defaultConfig {
+    namespace = "com.lyhoangvinh.sample.data"
     minSdk = (AppVersions.MIN_SDK)
     targetSdk = (AppVersions.TARGET_SDK)
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,19 @@ android {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
+  }
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+
+  kotlinOptions {
+    jvmTarget = "17"
+  }
+
+  buildFeatures {
+    buildConfig = true
   }
 }
 
@@ -37,7 +51,7 @@ dependencies {
   /*DI*/
   implementation(Lib.Di.hilt)
   implementation(Lib.Di.hiltNavigationCompose)
-  implementation(Lib.Di.viewmodel)
+//  implementation(Lib.Di.viewmodel)
   kapt(Lib.Di.hiltCompiler)
   kapt(Lib.Di.hiltAndroidCompiler)
 
