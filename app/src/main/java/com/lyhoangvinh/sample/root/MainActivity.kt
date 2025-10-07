@@ -23,12 +23,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var navigatorHelper: NavigatorHelper
 
-    @Inject
-    lateinit var getCategoriesAvg: GetCategoriesAvg
-
-    @Inject
-    lateinit var imageLoader: ImageLoader
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -44,15 +38,17 @@ class MainActivity : AppCompatActivity() {
                 ProvideWindowInsets(windowInsetsAnimationsEnabled = true) {
                     NavHost(
                         navController = navController,
-                        startDestination = "home_screen",
+                        startDestination = "compare",
                     ) {
-                        composable(route = "home_screen") {
+                        composable("compare") {
                             CompareDemoScreen(navController)
+                        }
+                        composable("spending") {
+                            SpendingChartScreen(onBack = { navController.popBackStack() })
                         }
                     }
                 }
             }
-
         }
     }
 }

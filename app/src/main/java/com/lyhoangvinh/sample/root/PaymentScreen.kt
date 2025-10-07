@@ -64,7 +64,9 @@ fun CompareDemoScreen(navController: NavController) {
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                item { HeaderSummary(amount = "$32.50", currency = "USD") }
+                item { HeaderSummary(amount = "$32.50", currency = "USD", onClick = {
+                    navController.navigate("spending")
+                }) }
                 item {
                     TwoColumnCompare(
                         left = left,
@@ -98,11 +100,12 @@ private fun CompareTopAppBar() {
 }
 
 @Composable
-fun HeaderSummary(amount: String, currency: String) {
+fun HeaderSummary(amount: String, currency: String, onClick: ()-> Unit) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        tonalElevation = 2.dp
+        tonalElevation = 2.dp,
+        onClick = onClick
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
@@ -187,7 +190,7 @@ fun OfferCard(offer: Offer, accent: Color, onClick: () -> Unit) {
 }
 
 @Composable
-private fun KeyValueRow(label: String, value: String) {
+fun KeyValueRow(label: String, value: String) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Text(value, fontWeight = FontWeight.Medium)
@@ -195,7 +198,7 @@ private fun KeyValueRow(label: String, value: String) {
 }
 
 @Composable
-private fun KeyValueRowTotal(label: String, value: String) {
+fun KeyValueRowTotal(label: String, value: String) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         Text(label, fontWeight = FontWeight.SemiBold)
         Text(value, fontWeight = FontWeight.Bold)
