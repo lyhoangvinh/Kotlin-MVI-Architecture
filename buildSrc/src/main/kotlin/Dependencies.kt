@@ -24,7 +24,7 @@ object BuildPlugins {
 object Lib {
     object Kotlin {
         const val KOTLIN_VERSION = "1.9.24"
-        private const val KTX_CORE_VERSION = "1.2.0"
+        private const val KTX_CORE_VERSION = "1.13.1"
 
         private const val COROUTINES_VERSION = "1.8.1"
 
@@ -51,14 +51,17 @@ object Lib {
     object Androidx {
         // Compose
         const val composeVersion = "1.5.14"
-        const val composeBom = "2024.09.01"
+        const val composeBom = "2024.05.00"
+
+        const val COMPOSE_MATERIAL_3 = "androidx.compose.material3:material3"
         private const val SPLASH_SCREEN_API = "androidx.core:core-splashscreen:1.0.1"
 
         private const val APP_COMPAT = "androidx.appcompat:appcompat:1.6.1"
 
         val list = listOf(
             APP_COMPAT,
-            SPLASH_SCREEN_API
+            SPLASH_SCREEN_API,
+            COMPOSE_MATERIAL_3
         )
 
         object Compose {
@@ -155,7 +158,7 @@ object Lib {
 
     object ThirdParty {
 //        private const val COIL_COMPOSE = "io.coil-kt:coil-compose:1.4.0"
-        const val COIL_COMPOSE = "io.coil-kt:coil-compose:2.0.0-rc02"
+        const val COIL_COMPOSE = "io.coil-kt:coil-compose:2.6.0"
         val list = listOf(COIL_COMPOSE)
     }
 
