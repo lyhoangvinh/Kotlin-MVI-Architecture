@@ -25,7 +25,6 @@ class AppModule {
     fun provideImageLoader(@ApplicationContext context: Context): ImageLoader {
         return ImageLoader.Builder(context)
             .okHttpClient {
-                // Tạo một OkHttpClient tùy chỉnh
                 OkHttpClient.Builder()
                     .addInterceptor { chain ->
                         val request = chain.request().newBuilder()

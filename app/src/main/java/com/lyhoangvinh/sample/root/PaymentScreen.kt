@@ -81,10 +81,11 @@ fun CompareDemoScreen() {
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CompareTopAppBar() {
-    SmallTopAppBar(
+    TopAppBar(
         title = { Text("Compare payment options", fontWeight = FontWeight.SemiBold) }
     )
 }
