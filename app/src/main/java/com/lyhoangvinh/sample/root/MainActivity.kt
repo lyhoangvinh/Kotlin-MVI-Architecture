@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                         startDestination = "home_screen",
                     ) {
                         composable(route = "home_screen") {
-                            CompareDemoScreen()
+                            CompareDemoScreen(navController)
                         }
                     }
                 }

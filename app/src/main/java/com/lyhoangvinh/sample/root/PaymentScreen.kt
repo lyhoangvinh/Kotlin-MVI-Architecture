@@ -1,5 +1,6 @@
 package com.lyhoangvinh.sample.root
 
+import android.net.Uri
 import com.lyhoangvinh.sample.domain.model.Offer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -20,9 +21,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun CompareDemoScreen() {
+fun CompareDemoScreen(navController: NavController) {
     val left by remember {
         mutableStateOf(
             Offer(
@@ -66,8 +69,12 @@ fun CompareDemoScreen() {
                     TwoColumnCompare(
                         left = left,
                         right = right,
-                        onLeftClick = {},
-                        onRightClick = {}
+                        onLeftClick = {
+                            navController.navigate("confirm/${Uri.encode(left.title)}")
+                        },
+                        onRightClick = {
+                            navController.navigate("confirm/${Uri.encode(right.title)}")
+                        }
                     )
                 }
                 item { OrDivider() }
@@ -257,4 +264,7 @@ fun paypalishScheme(): ColorScheme {
 
 @Preview(showBackground = true)
 @Composable
-private fun PreviewCompare() { CompareDemoScreen() }
+private fun PreviewCompare() {
+    val navController = rememberNavController()
+    CompareDemoScreen(navController)
+}
