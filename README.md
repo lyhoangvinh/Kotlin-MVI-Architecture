@@ -1,9 +1,19 @@
-# Kotlin MVI Architecture
-<div align="left">
-    <a href = "https://developer.android.com/jetpack/androidx/versions/all-channel#may_5_2021">
-        <img src = "https://img.shields.io/badge/Jetpack%20Compose-1.0.0%20beta08-brightgreen" />
-    </a>
+
+<div align="center">
+
+# Kotlin MVI Architecture 
+<br>
+
+<img src="https://img.shields.io/badge/Android-Kotlin-3DDC84?logo=android"/>
+<img src="https://img.shields.io/badge/UI-Jetpack%20Compose-blue"/>
+<img src="https://img.shields.io/badge/Architecture-MVI-orange"/>
+<img src="https://img.shields.io/badge/DI-Hilt-red"/>
+<img src="https://img.shields.io/badge/Database-Room-green"/>
+
+<br>
+
 </div>
+
 <br>
 This is a sample app written in Kotlin following clean architecture principles which uses slack app features as an example.
 This MVI base was used as the foundation for AnShin Care (Ông Bà Ơi), a senior health care support app now live on the Google Play Store.
